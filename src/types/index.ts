@@ -3,7 +3,6 @@ export interface Exercise {
   name: string;
   gifUrl: string;
   instructions?: string;
-  createdAt: number;
 }
 
 export type TimerMode = 'idle' | 'working' | 'paused' | 'break';
@@ -24,5 +23,3 @@ export interface TimerSettings {
   longBreakDuration: number;
   cyclesBeforeLongBreak: number;
 }
-
-export type RenderStyle = 'silhouette' | 'stick' | 'anatomical';

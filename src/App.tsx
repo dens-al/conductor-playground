@@ -40,10 +40,6 @@ function App() {
     setPrevMode(timer.mode);
   }, [timer.mode, prevMode, getRandomExercise]);
 
-  const handleExerciseSaved = (exercise: Exercise) => {
-    addExercise(exercise);
-  };
-
   // Break view
   if (timer.mode === 'break') {
     return (
@@ -115,7 +111,7 @@ function App() {
               onResetCycles={timer.resetCycles}
             />
 
-            <AddExercise onExerciseSaved={handleExerciseSaved} />
+            <AddExercise onExerciseSaved={addExercise} />
 
             <div>
               <h3 className="text-lg font-semibold text-white mb-4">

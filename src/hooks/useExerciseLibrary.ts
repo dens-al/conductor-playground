@@ -41,7 +41,6 @@ export function useExerciseLibrary() {
 
   return {
     exercises,
-    isLoaded,
     addExercise,
     removeExercise,
     getRandomExercise,
