@@ -30,7 +30,6 @@ export function AddExercise({ onExerciseSaved }: AddExerciseProps) {
       name: name.trim(),
       gifUrl: gifUrl.trim(),
       instructions: instructions.trim() || undefined,
-      createdAt: Date.now(),
     };
 
     onExerciseSaved(exercise);

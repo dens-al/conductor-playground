@@ -178,15 +178,8 @@ export function useTimer() {
     return clearTimer;
   }, [state.mode, clearTimer]);
 
-  // For backwards compatibility, expose breakDuration as the current break duration
-  const currentBreakDuration =
-    state.cyclesCompleted + 1 >= state.cyclesBeforeLongBreak
-      ? state.longBreakDuration
-      : state.shortBreakDuration;
-
   return {
     ...state,
-    breakDuration: currentBreakDuration,
     start,
     pause,
     resume,
