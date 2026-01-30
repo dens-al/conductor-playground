@@ -40,11 +40,11 @@ function App() {
   }, [timer.mode, prevMode, getRandomExercise]);
 
   // Break view
-  if (timer.mode === 'break') {
+  if (timer.mode === 'break' && currentExercise) {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
         <ExerciseDisplay
-          exercise={currentExercise!}
+          exercise={currentExercise}
           secondsRemaining={timer.secondsRemaining}
           onEndBreak={timer.endBreak}
         />
