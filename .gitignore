@@ -15,6 +15,12 @@ dist-ssr
 # Reference images (large files)
 reference-images/
 
+# Capacitor Android build artifacts
+android/app/build
+android/.gradle
+android/build
+android/capacitor-cordova-android-plugins/build
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
