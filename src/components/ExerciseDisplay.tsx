@@ -1,7 +1,7 @@
 import type { Exercise } from '../types';
 
 interface ExerciseDisplayProps {
-  exercise: Exercise | null;
+  exercise: Exercise;
   secondsRemaining: number;
   onEndBreak: () => void;
 }
@@ -20,28 +20,21 @@ export function ExerciseDisplay({ exercise, secondsRemaining, onEndBreak }: Exer
         <p className="text-gray-400">Take a moment to stretch</p>
       </div>
 
-      {exercise ? (
-        <div className="flex flex-col items-center gap-4">
-          <div className="bg-gray-800 rounded-2xl p-4 overflow-hidden">
-            <img
-              src={exercise.gifUrl}
-              alt={exercise.name}
-              className="w-64 h-64 object-contain rounded-lg"
-            />
-          </div>
-          <h3 className="text-xl font-semibold text-white">{exercise.name}</h3>
-          {exercise.instructions && (
-            <p className="text-gray-400 text-center max-w-sm">{exercise.instructions}</p>
-          )}
+      <div className="flex flex-col items-center gap-4">
+        <div className="bg-gray-800 rounded-2xl p-4 overflow-hidden">
+          <video
+            src={exercise.videoUrl}
+            autoPlay
+            loop
+            playsInline
+            className="w-64 h-64 object-contain rounded-lg"
+          />
         </div>
-      ) : (
-        <div className="bg-gray-800 rounded-2xl p-8 text-center">
-          <p className="text-gray-400 mb-4">No exercises added yet!</p>
-          <p className="text-gray-500 text-sm">
-            Click the settings icon to add exercise GIFs.
-          </p>
-        </div>
-      )}
+        <h3 className="text-xl font-semibold text-white">{exercise.name}</h3>
+        {exercise.instructions && (
+          <p className="text-gray-400 text-center max-w-sm">{exercise.instructions}</p>
+        )}
+      </div>
 
       <div className="text-center">
         <div className="text-5xl font-mono font-bold text-green-400">
