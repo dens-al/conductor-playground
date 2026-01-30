@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useTimer } from './hooks/useTimer';
 import { useExerciseLibrary } from './hooks/useExerciseLibrary';
 import { ExerciseDisplay } from './components/ExerciseDisplay';
-import { AddExercise } from './components/AddExercise';
 import { ExerciseLibrary } from './components/ExerciseLibrary';
 import { CircularTimer } from './components/CircularTimer';
 import { TimerSettings } from './components/TimerSettings';
@@ -19,7 +18,7 @@ function formatTime(seconds: number): string {
 
 function App() {
   const timer = useTimer();
-  const { exercises, addExercise, removeExercise, getRandomExercise } = useExerciseLibrary();
+  const { exercises, getRandomExercise } = useExerciseLibrary();
   const [showSettings, setShowSettings] = useState(false);
   const [currentExercise, setCurrentExercise] = useState<Exercise | null>(null);
   const [prevMode, setPrevMode] = useState(timer.mode);
@@ -45,7 +44,7 @@ function App() {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
         <ExerciseDisplay
-          exercise={currentExercise}
+          exercise={currentExercise!}
           secondsRemaining={timer.secondsRemaining}
           onEndBreak={timer.endBreak}
         />
@@ -111,13 +110,11 @@ function App() {
               onResetCycles={timer.resetCycles}
             />
 
-            <AddExercise onExerciseSaved={addExercise} />
-
             <div>
               <h3 className="text-lg font-semibold text-white mb-4">
-                Your Exercises ({exercises.length})
+                Exercise Library ({exercises.length})
               </h3>
-              <ExerciseLibrary exercises={exercises} onRemove={removeExercise} />
+              <ExerciseLibrary exercises={exercises} />
             </div>
           </div>
         ) : (
@@ -233,12 +230,6 @@ function App() {
                 {timer.cyclesCompleted}/{timer.cyclesBeforeLongBreak} until long break
               </span>
             </div>
-
-            {exercises.length === 0 && (
-              <p className="text-gray-500 text-sm mt-4">
-                Tip: Add exercises in settings to see them during breaks!
-              </p>
-            )}
           </div>
         )}
       </main>
